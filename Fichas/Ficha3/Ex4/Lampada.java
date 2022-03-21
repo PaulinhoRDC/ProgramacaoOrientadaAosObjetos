@@ -1,4 +1,4 @@
-package Fichas.Ficha3;
+package Fichas.Ficha3.Ex4;
 
 public class Lampada {
 
@@ -37,7 +37,6 @@ public class Lampada {
     }
 
     // Getter && Setter 's //
-
 
     public boolean getModo() {
         return modo;
@@ -87,6 +86,7 @@ public class Lampada {
         this.periodoConsummo = periodoConsummo;
     }
 
+    // (a) ligar a lâmpada no modo consumo máximo, public void lampON()
     public void lampON(){
 
         if (estadoOn)
@@ -97,17 +97,8 @@ public class Lampada {
         estadoOn = true;                                // this.estadoOn = true;
     }
 
-    public void lampECO(){
 
-        if(estadoOn)
-            return;
-
-        this.modo = true;
-        this.tempoOn = System.currentTimeMillis();
-        estadoOn = true;                                // this.estadoOn = true;
-
-    }
-
+    // (b) desligar a lâmpada, public void lampOFF()
     public void lampOFF(){
 
         if(estadoOn == false)
@@ -121,17 +112,43 @@ public class Lampada {
         estadoOn = false;
     }
 
+    // (c) ligar a lâmpada em modo ECO, public void lampECO()
+    public void lampECO(){
+
+        if(estadoOn)
+            return;
+
+        this.modo = true;
+        this.tempoOn = System.currentTimeMillis();
+        estadoOn = true;                                // this.estadoOn = true;
+
+    }
+
+    // (d) devolver a informação de quanto se gastou desde a criação da lâm- pada, public double totalConsumo()
     public double totalConsumo(){
         return totalConsumo;
     }
 
+
+    // (e) devolver a informação de quanto se gastou desde o último reset de consumo, public double periodoConsumo()
     public double periodoConsumo(){
         return periodoConsummo;
     }
 
+
     public void reset (){
         this.lampOFF();
         this.periodoConsummo = 0;
+    }
+
+    //OUTROS
+
+    public Lampada clone () {
+        return new Lampada (this);
+    }
+
+    public String toString() {
+        return "Estado: " + this.estadoOn + " | " + "Eco: " + this.modo;
     }
 
 

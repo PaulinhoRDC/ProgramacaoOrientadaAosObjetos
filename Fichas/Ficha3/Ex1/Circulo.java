@@ -1,6 +1,6 @@
-package Fichas.Ficha3;
+package Fichas.Ficha3.Ex1;
 
-public class Circulo {
+public class Circulo {// extends Ponto2 {
 
     private double x;
     private double y;
@@ -54,6 +54,26 @@ public class Circulo {
         this.raio = raio;
     }
 
+
+    // (e) método que altera o posicionamento do círculo, public void alteraCentro(double x, double y)
+    public void alteraCentro(double x , double y){
+        this.x = x;
+        this.y = y;
+    }
+
+    // (f) método que calcula a área do círculo, public double calculaArea()
+    public double calculaArea(){
+        return Math.PI*Math.pow(raio,2);  // PI * raio^2
+    }
+
+    // (g) método que calcula o perímetro do círculo, public double calculaPerimetro()
+    public double calculaPerimetro(){
+        return 2*Math.PI*raio;            //2 * PI * raio
+    }
+
+
+    // OUTROS MÉTODOS QUE TODAS AS CLASSES DEVEM CONTER
+
     public boolean equals(Object o){
         if(this == o){
             return true;
@@ -78,18 +98,4 @@ public class Circulo {
     public Circulo clone(){
         return new Circulo(this);
     }
-
-    public void alteraCentro(double x , double y){
-        this.x = x;
-        this.y = y;
-    }
-
-    public double calculaArea(){
-        return Math.PI*Math.pow(raio,2);  // PI * raio^2
-    }
-
-    public double calculaPerimetro(){
-        return 2*Math.PI*raio;            //2 * PI * raio
-    }
-
 }

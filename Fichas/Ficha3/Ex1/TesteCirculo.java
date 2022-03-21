@@ -1,8 +1,6 @@
-package Fichas.Ficha3;
+package Fichas.Ficha3.Ex1;
 
-import Fichas.Ficha2.Ex1;
-
-import java.util.Scanner;
+import Fichas.Ficha3.Ex1.Circulo;
 
 public class TesteCirculo {
 
