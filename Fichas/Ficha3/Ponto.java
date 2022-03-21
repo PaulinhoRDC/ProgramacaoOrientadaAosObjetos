@@ -22,7 +22,7 @@ package Fichas.Ficha3;
  */
 public class Ponto {
 
-    //variÃ¡veis de instÃ¢ncia
+    //variáveis de instância
     private int x;
     private int y;
 
@@ -33,7 +33,7 @@ public class Ponto {
      */
 
     /**
-     * Construtor por omissÃ£o de Ponto.
+     * Construtor por omissão de Ponto.
      */
     public Ponto() {
         this.x = 0;
@@ -42,7 +42,7 @@ public class Ponto {
 
     /**
      * Construtor parametrizado de Ponto.
-     * Aceita como parÃ¢metros os valores para cada coordenada.
+     * Aceita como parâmetros os valores para cada coordenada.
      */
     public Ponto(int x, int y) {
         this.x = x;
@@ -56,17 +56,17 @@ public class Ponto {
 
 
     /**
-     * Construtor de cÃ³pia de Ponto.
-     * Aceita como parÃ¢metro outro Ponto e utiliza os mÃ©todos
-     * de acesso aos valores das variÃ¡veis de instÃ¢ncia.
+     * Construtor de cópia de Ponto.
+     * Aceita como parâmetro outro Ponto e utiliza os métodos
+     * de acesso aos valores das variáveis de instância.
      */
     public Ponto(Ponto umPonto) {
-        this.x = umPonto.getX();   // this.x = umPonto.x; -- nÃ£o faz parte do alfabeto definido
+        this.x = umPonto.getX();                            // this.x = umPonto.x; -- não faz parte do alfabeto definido
         this.y = umPonto.getY();
     }
 
     /**
-     * mÃ©todos de instÃ¢ncia
+     * métodos de instância
      */
 
     /**
@@ -119,7 +119,7 @@ public class Ponto {
 
     /**
      * Método que soma as componentes do Ponto passado como parÃ¢metro.
-     * @param umPonto ponto que Ã© somado ao ponto receptor da mensagem.
+     * @param umPonto ponto que é somado ao ponto receptor da mensagem.
      */
     public void somaPonto(Ponto umPonto) {
         this.x += umPonto.getX();
@@ -137,7 +137,7 @@ public class Ponto {
     }
 
     /**
-     * Método que determina se o ponto estÃ¡ no quadrante positivo de x e y
+     * Método que determina se o ponto estão no quadrante positivo de x e y
      * @return booleano que Ã© verdadeiro se x>0 e y>0
      */
     public boolean ePositivo() {
@@ -145,12 +145,12 @@ public class Ponto {
     }
 
     /**
-     * Método que determina a distÃ¢ncia de um Ponto a outro.
-     * Determina a distÃ¢ncia entre this e o ponto passado por parÃ¢metro.
+     * Método que determina a distância de um Ponto a outro.
+     * Determina a distância entre this e o ponto passado por parâmetro.
      *
      *
-     * @param umPonto ponto ao qual se quer determinar a distÃ¢ncia
-     * @return double com o valor da distÃ¢ncia
+     * @param umPonto ponto ao qual se quer determinar a distância
+     * @return double com o valor da distância
      */
     public double distancia(Ponto umPonto) {
 
@@ -160,8 +160,8 @@ public class Ponto {
 
 
     /**
-     * Método que determina se dois pontos sÃ£o iguais.
-     * @return booleano que Ã© verdadeiro se os valores das duas
+     * Método que determina se dois pontos são iguais.
+     * @return booleano que é verdadeiro se os valores das duas
      * coordenadas forem iguais
      */
     public boolean iguais(Ponto umPonto) {
@@ -170,7 +170,7 @@ public class Ponto {
 
 
     /**
-     * Método que determina se o mÃ³dulo das duas coordenadas Ã© o mesmo.
+     * Método que determina se o módulo das duas coordenadas é o mesmo.
      * @return true, se as coordenadas em x e y
      * forem iguais em valor absoluto.
      */
@@ -179,7 +179,7 @@ public class Ponto {
     }
 
     /**
-     * Método que devolve a representaÃ§Ã£o em String do Ponto.
+     * Método que devolve a representação em String do Ponto.
      * @return String com as coordenadas x e y
      */
     public String toString() {
@@ -198,8 +198,8 @@ public class Ponto {
 
 
     /**
-     * Método que faz uma cÃ³pia do objecto receptor da mensagem.
-     * Para tal invoca o construtor de cÃ³pia.
+     * Método que faz uma cópia do objecto receptor da mensagem.
+     * Para tal invoca o construtor de cópia.
      *
      * @return objecto clone do objecto que recebe a mensagem.
      */

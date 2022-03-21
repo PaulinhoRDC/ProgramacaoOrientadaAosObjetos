@@ -11,15 +11,15 @@ public class TesteColCirculos {
             cc.addCirculo( new Circulo2( new Ponto(i,i), i));
         }
 
-        System.out.println("Coleção: " + cc);
+        System.out.println("Coleção: " + cc + "\n");
         ColCirculos cc1 = cc.clone();
-        System.out.println("Coleção clone: " + cc1);
+        System.out.println("Coleção clone: " + cc1 + "\n");
 
-        System.out.println("cc equals cc1: " + cc.equals(cc1));
+        System.out.println("cc equals cc1: " + cc.equals(cc1) + "\n");
 
         for(int i=1; i<10;i++){
             Circulo2 cp = new Circulo2( new Ponto(i,i) ,i);
-            System.out.println(" colecao contains: " + cp + " " + cc.existeCirculo(cp));
+            System.out.println("Colecao contains: " + cp + " -> " + cc.existeCirculo(cp));
         }
 
     }

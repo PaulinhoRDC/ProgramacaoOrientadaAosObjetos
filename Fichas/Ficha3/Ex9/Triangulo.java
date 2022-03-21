@@ -8,6 +8,7 @@ public class Triangulo {
     private Ponto b;
     private Ponto c;
 
+    //Construtores
     public Triangulo() {
         this.a = new Ponto();
         this.b = new Ponto();
@@ -25,6 +26,8 @@ public class Triangulo {
         this.b = triangulo.getB().clone();
         this.c = triangulo.getC().clone();
     }
+
+    // (a) métodos de acesso e alteração das variáveis de instância
 
     public Ponto getA() {
         return this.a;
@@ -61,17 +64,20 @@ public class Triangulo {
         return sides;
     }
 
-    public double calculaAreaTriangulo() {
+    // (b) método que calcula a área do triângulo, public double calculaAreaTriangulo()
+    public double calculaAreaTriangulo() {                                                          // base * altura / 2
         double[] sides = getSides();
         double s = (sides[0] + sides[1] + sides[2]) / 2;
         return Math.sqrt(s * (s - sides[0]) * (s - sides[1]) * (s - sides[2]));
     }
 
-    public double calculaPerimetroTriangulo() {
+    // (c) método que calcula o perímetro do triângulo, public double calculaPerimetroTriangulo()
+    public double calculaPerimetroTriangulo() {                                                     // soma dos lados
         double[] sides = getSides();
         return sides[0] + sides[1] + sides[2];
     }
 
+    // (d) método que calcula a altura do triângulo, definido como sendo a distância no eixo dos y entre o ponto com menor coordenada em y e o ponto com maior coordenada.
     public double calculaAltura() {
         double minY = Double.POSITIVE_INFINITY;
         double maxY = Double.NEGATIVE_INFINITY;
@@ -83,8 +89,10 @@ public class Triangulo {
         return maxY - minY;
     }
 
+    //OUTROS MÉTODOS QUE TODAS AS CLASSES DEVEM TER
+
     public String toString() {
-        final StringBuffer sb = new StringBuffer("Triangulo {");
+        final StringBuffer sb = new StringBuffer("Triangulo {");            // Aqui, toString usa StringBuffer
         sb.append("\na=").append(a.toString());
         sb.append("\nb=").append(b.toString());
         sb.append("\nc=").append(c.toString());

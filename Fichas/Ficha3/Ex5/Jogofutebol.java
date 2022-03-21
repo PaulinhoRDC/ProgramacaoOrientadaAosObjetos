@@ -10,6 +10,8 @@ public class Jogofutebol {
     private Estado estado;
 
     private int golosVisitado, golosVisitante;
+
+    //CONSTRUTORES
     public Jogofutebol () {
         this(Estado.PORINICAR);
     }
@@ -22,6 +24,7 @@ public class Jogofutebol {
         this.golosVisitante = j.golosVisitante;
     }
 
+    //MÉTODOS
     public void startGame () {
         if (this.estado == Estado.PORINICAR) {
             this.estado = Estado.DECORRER;
@@ -52,6 +55,7 @@ public class Jogofutebol {
         return "Visitante: " + this.golosVisitante + " Visitado: " + this.golosVisitado;
     }
 
+    //OUTROS MÉTODOS QUE TODAS AS CLASSES DEVEM CONTER
     public String toString () {
         return "Estado: " + this.estado + " " + this.resultadoAtual();
     }

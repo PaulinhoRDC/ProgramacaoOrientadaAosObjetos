@@ -23,6 +23,7 @@ public class ColCirculos {
         this.circulos = c.getCirculos();
     }
 
+    // GETTER'S & SETTER'S
     public List<Circulo2> getCirculos(){
         List<Circulo2> res = new ArrayList<>();
         for(Circulo2 c: this.circulos){
@@ -39,6 +40,7 @@ public class ColCirculos {
         }
     }
 
+    //MÉTODOS
     public int numeroCirculos(){
         return this.circulos.size();
     }
@@ -56,6 +58,7 @@ public class ColCirculos {
     }
 
 
+    //OUTROS MÉTODOS QUE TODAS AS CLASSES DEVEM CONTER
     public boolean equals(Object o){
         if(this == o){
             return true;
@@ -72,13 +75,12 @@ public class ColCirculos {
     }
 
     public String toString(){
-        return "ColCirculos" + "circulos= " + this.circulos + "}";
+        return "circulos= " + this.circulos + "}";
     }
     // ou toStrung com o StringBuilder e ir fazendo append
 
     public ColCirculos clone(){
         return new ColCirculos(this);
     }
-
 
 }

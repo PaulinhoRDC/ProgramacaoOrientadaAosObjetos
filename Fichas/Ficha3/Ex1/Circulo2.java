@@ -41,6 +41,11 @@ public class Circulo2 extends Ponto {
         return raio;
     }
 
+
+    public void alteraCentro(Ponto centro){
+        this.centro = centro;
+    }
+
     public double calculaArea(){
         return Math.PI*Math.pow(raio,2);  // PI * raio^2
     }
@@ -78,11 +83,6 @@ public class Circulo2 extends Ponto {
     public Circulo2 clone(){
         return new Circulo2(this);
     }
-
-    public void alteraCentro(Ponto centro){
-        this.centro = centro;
-    }
-
 
 }
 

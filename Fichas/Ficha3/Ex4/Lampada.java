@@ -107,9 +107,9 @@ public class Lampada {
         long now = System.currentTimeMillis();
         long periodo = now - tempoOn;
 
-        totalConsumo += periodo*consumo;
-        periodoConsummo += periodo*consumo;
-        estadoOn = false;
+        this.totalConsumo += periodo*consumo;
+        this.periodoConsummo += periodo*consumo;
+        this.estadoOn = false;
     }
 
     // (c) ligar a lâmpada em modo ECO, public void lampECO()

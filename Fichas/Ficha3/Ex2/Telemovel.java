@@ -174,7 +174,7 @@ public class Telemovel {
     // f)
     public void removeApp(String nome, int tamanho) {
         this.apps.remove(nome);
-        this.storageApps += tamanho;
+        this.storageApps -= tamanho;
     }
 
     @Override
