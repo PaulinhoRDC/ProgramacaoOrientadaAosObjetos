@@ -1,4 +1,4 @@
-package Fichas.Ficha4;
+package Fichas.Ficha4.Ex3;
 
 /*********************************************************************************/
 /** DISCLAIMER: Este cÃ³digo foi criado e alterado durante as aulas prÃ¡ticas      */
@@ -115,6 +115,8 @@ public class Lampada {
         this.periodoConsumo = pC;
     }
 
+
+    // OUTROS MÉTODOS QUE TODAS AS CLASSES DEVEM CONTER
     public boolean equals(Object o) {
         if (this==o) return true;
         if ((o == null) || (this.getClass() != o.getClass())) return false;
