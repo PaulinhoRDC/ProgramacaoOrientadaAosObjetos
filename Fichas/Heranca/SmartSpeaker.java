@@ -1,4 +1,4 @@
- 
+package Fichas.Heranca;
 
 /*********************************************************************************/
 /** DISCLAIMER: Este código foi criado e alterado durante as aulas práticas      */
@@ -10,7 +10,6 @@
 /** procurar soluções alternativas, à medida que forem adquirindo mais           */
 /** conhecimentos de POO.                                                        */
 /*********************************************************************************/
-package Heranca;
 
 /**
  * Um SmartSpeaker é um SmartDevice que além de ligar e desligar permite também

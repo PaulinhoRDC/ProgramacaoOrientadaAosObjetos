@@ -1,6 +1,6 @@
 
 
-package Heranca;
+package Fichas.Heranca;
 
 /*********************************************************************************/
 /** DISCLAIMER: Este código foi criado e alterado durante as aulas práticas      */
@@ -13,7 +13,7 @@ package Heranca;
 /** conhecimentos de POO.                                                        */
 /*********************************************************************************/
 
-import Ficha5.Encomenda;
+import Fichas.Ficha5.Ex4.Encomenda;
 
 import java.util.Objects;
 

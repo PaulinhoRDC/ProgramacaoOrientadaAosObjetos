@@ -1,3 +1,5 @@
+package Fichas.Heranca;
+
 /*********************************************************************************/
 /** DISCLAIMER: Este código foi criado e alterado durante as aulas práticas      */
 /** de POO. Representa uma solução em construção, com base na matéria leccionada */ 
@@ -8,7 +10,7 @@
 /** procurar soluções alternativas, à medida que forem adquirindo mais           */
 /** conhecimentos de POO.                                                        */
 /*********************************************************************************/
-package Heranca;
+
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
