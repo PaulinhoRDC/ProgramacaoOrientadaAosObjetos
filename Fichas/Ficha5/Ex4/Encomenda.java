@@ -150,14 +150,12 @@ public class Encomenda {
 
 
     /*
-     * MÃ©todo de resposta a B) com recurso a iteradores internos.
+     * Método de resposta a B) com recurso a iteradores internos.
      */
 
     public double calculaValorTotal_I() {
         return this.linhas.stream().mapToDouble(LinhaEncomenda::calculaValorLinhaEnc).sum();
     }
-
-
 
     /**
      * C)
@@ -168,7 +166,7 @@ public class Encomenda {
     }
 
     /*
-     * MÃ©todo que implementa C) com recurso a iteradores externos
+     * Méodo que implementa C) com recurso a iteradores externos
      */
 
     public double calculaValorDesconto_E() {
@@ -207,7 +205,7 @@ public class Encomenda {
     }
 
 
-    // codificaÃ§Ã£o alternativa de E) com recurso a iteradores internos
+    // Codificação alternativa de E) com recurso a iteradores internos
     public boolean existeNaEncomenda(String codProd) {
         return this.linhas.stream().anyMatch(e -> (e.getReferencia()).equals(codProd));
     }
@@ -233,13 +231,10 @@ public class Encomenda {
         }
     }
 
-    //calcula o nÃºmero de produtos encomendados nesta encomenda
+    //Calcula o número de produtos encomendados nesta encomenda
     public int numProdutos() {
-
         return this.linhas.stream().mapToInt(LinhaEncomenda::getQuantidade).sum();
     }
-
-
 
 
 
