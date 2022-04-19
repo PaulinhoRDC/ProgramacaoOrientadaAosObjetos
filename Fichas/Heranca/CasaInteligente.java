@@ -25,7 +25,7 @@ import java.util.stream.Collectors;
 public class CasaInteligente {
    
     private String morada;
-    private Map<String, SmartDevice> devices; // identificador -> SmartDevice
+    private Map<String, SmartDevice> devices; // Identificador -> SmartDevice
     private Map<String, List<String>> locations; // Espaço -> Lista codigo dos devices
 
     /**
