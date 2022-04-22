@@ -18,23 +18,50 @@ a informação das actividades que realizou;
  */
 
 import java.time.LocalDate;
-import java.util.Date;
+import java.util.Objects;
 
-public class Utilizador extends Atividades{
-
+public class Utilizador {
     private String email;
     private String password;
     private String nome;
     private String genero;
-    private double altura;
-    private double peso;
-    private LocalDate datanascimento;
-    private String favorito;
+    private int altura;
+    private int peso;
+    private LocalDate dataNascimento;
+    private int desportoFavorito;
 
-    // informação das atividades que realizou
+    public Utilizador(){
+        this.email = "";
+        this.password = "";
+        this.nome = "";
+        this.genero = "";
+        this.altura = 0;
+        this.peso = 0;
+        this.dataNascimento = LocalDate.EPOCH;
+        this.desportoFavorito = 0;
+    }
 
-    //GETTER'S & SETTER'S//
+    public Utilizador(String email, String password, String nome, String genero, int altura, int peso, LocalDate dataNascimento, int desportoFavorito){
+        this.email = email;
+        this.password = password;
+        this.nome = nome;
+        this.genero = genero;
+        this.altura = altura;
+        this.peso = peso;
+        this.dataNascimento = dataNascimento;
+        this.desportoFavorito = desportoFavorito;
+    }
 
+    public Utilizador(Utilizador a){
+        this.email = a.getEmail();
+        this.password = a.getPassword();
+        this.nome = a.getNome();
+        this.genero = a.getGenero();
+        this.altura = a.getAltura();
+        this.peso = a.getPeso();
+        this.dataNascimento = a.dataNascimento;
+        this.desportoFavorito = a.desportoFavorito;
+    }
 
     public String getEmail() {
         return email;
@@ -68,36 +95,62 @@ public class Utilizador extends Atividades{
         this.genero = genero;
     }
 
-    public double getAltura() {
+    public int getAltura() {
         return altura;
     }
 
-    public void setAltura(double altura) {
+    public void setAltura(int altura) {
         this.altura = altura;
     }
 
-    public double getPeso() {
+    public int getPeso() {
         return peso;
     }
 
-    public void setPeso(double peso) {
+    public void setPeso(int peso) {
         this.peso = peso;
     }
 
-    public LocalDate getDatanascimento() {
-        return datanascimento;
+    public LocalDate getDataNascimento() {
+        return dataNascimento;
     }
 
-    public void setDatanascimento(LocalDate datanascimento) {
-        this.datanascimento = datanascimento;
+    public void setDataNascimento(LocalDate dataNascimento) {
+        this.dataNascimento = dataNascimento;
     }
 
-    public String getFavorito() {
-        return favorito;
+    public int getDesportoFavorito() {
+        return desportoFavorito;
     }
 
-    public void setFavorito(String favorito) {
-        this.favorito = favorito;
+    public void setDesportoFavorito(int desportoFavorito) {
+        this.desportoFavorito = desportoFavorito;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Utilizador that = (Utilizador) o;
+        return altura == that.altura && peso == that.peso && desportoFavorito == that.desportoFavorito && Objects.equals(email, that.email) && Objects.equals(password, that.password) && Objects.equals(nome, that.nome) && Objects.equals(genero, that.genero) && Objects.equals(dataNascimento, that.dataNascimento);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(email, password, nome, genero, altura, peso, dataNascimento, desportoFavorito);
+    }
+
+    @Override
+    public String toString() {
+        return "Utilizador{" +
+                "email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", nome='" + nome + '\'' +
+                ", genero='" + genero + '\'' +
+                ", altura=" + altura +
+                ", peso=" + peso +
+                ", dataNascimento=" + dataNascimento +
+                ", desportoFavorito=" + desportoFavorito +
+                '}';
+    }
 }
