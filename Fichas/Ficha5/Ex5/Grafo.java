@@ -100,9 +100,4 @@ public class Grafo {
                 .allMatch(e -> !this.adj.containsKey(e.getKey()) || e.getValue().containsAll(this.adj.get(e.getKey())));
     }
 
-
-
-
-
-
 }
