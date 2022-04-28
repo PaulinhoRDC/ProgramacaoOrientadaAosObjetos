@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.Iterator;
 /**
- * Classe que implementa uma Encomenda (cf exercÃ­cio da Ficha 4).
+ * Classe que implementa uma Encomenda (cf exercício da Ficha 4).
  *
  * @author MaterialPOO
  * @version 20180323
