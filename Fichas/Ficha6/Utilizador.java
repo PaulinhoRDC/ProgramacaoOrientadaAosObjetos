@@ -17,8 +17,14 @@ a informação das actividades que realizou;
 
  */
 
+import Fichas.Ficha4.Ex3.Lampada;
+import Fichas.Ficha5.Ex2.TurmaAlunos;
+
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class Utilizador {
     private String email;
@@ -30,6 +36,8 @@ public class Utilizador {
     private LocalDate dataNascimento;
     private int desportoFavorito;
 
+    private List<Atividade> atividades;
+
     public Utilizador(){
         this.email = "";
         this.password = "";
@@ -39,9 +47,11 @@ public class Utilizador {
         this.peso = 0;
         this.dataNascimento = LocalDate.EPOCH;
         this.desportoFavorito = 0;
+
+        this.atividades = new ArrayList<>();
     }
 
-    public Utilizador(String email, String password, String nome, String genero, int altura, int peso, LocalDate dataNascimento, int desportoFavorito){
+    public Utilizador(String email, String password, String nome, String genero, int altura, int peso, LocalDate dataNascimento, int desportoFavorito, List<Atividade> atividades2){
         this.email = email;
         this.password = password;
         this.nome = nome;
@@ -50,6 +60,8 @@ public class Utilizador {
         this.peso = peso;
         this.dataNascimento = dataNascimento;
         this.desportoFavorito = desportoFavorito;
+
+        setAtividades(atividades2);
     }
 
     public Utilizador(Utilizador a){
@@ -59,8 +71,10 @@ public class Utilizador {
         this.genero = a.getGenero();
         this.altura = a.getAltura();
         this.peso = a.getPeso();
-        this.dataNascimento = a.dataNascimento;
-        this.desportoFavorito = a.desportoFavorito;
+        this.dataNascimento = a.getDataNascimento();
+        this.desportoFavorito = a.getDesportoFavorito();
+
+        this.atividades = a.getAtividades();
     }
 
     public String getEmail() {
@@ -127,6 +141,17 @@ public class Utilizador {
         this.desportoFavorito = desportoFavorito;
     }
 
+
+    public List<Atividade> getAtividades() {
+        return this.atividades.stream().map(Atividade::clone).collect(Collectors.toList());
+    }
+
+    public void setAtividades(List<Atividade> atividades) {
+        this.atividades = new ArrayList<>();
+        for(Atividade a: atividades){
+            this.atividades.add(a.clone());
+        }    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -153,4 +178,10 @@ public class Utilizador {
                 ", desportoFavorito=" + desportoFavorito +
                 '}';
     }
+
+    @Override
+    public Utilizador clone(){
+        return new Utilizador(this);
+    }
+
 }
