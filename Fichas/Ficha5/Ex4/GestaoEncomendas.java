@@ -3,9 +3,11 @@ package Fichas.Ficha5.Ex4;
 import Fichas.Ficha5.Ex2.Aluno;
 import Fichas.Ficha5.Ex2.TurmaAlunos;
 
+import java.time.LocalDate;
 import java.util.*;
+import java.util.stream.Collectors;
 
-public class GestaoEncomendas {
+public class GestaoEncomendas implements Comparable<GestaoEncomendas>{
 
     private Map<Integer,Encomenda> encomendas;
 
@@ -24,6 +26,8 @@ public class GestaoEncomendas {
     public GestaoEncomendas(GestaoEncomendas e){
         this.encomendas = e.getEncomendas();
     }
+
+    // GETTER'S & SETTER'S //
 
     public Map<Integer, Encomenda> getEncomendas() {
         Map<Integer, Encomenda> r = new HashMap<>();
@@ -65,6 +69,11 @@ public class GestaoEncomendas {
 
     public GestaoEncomendas clone(){
         return new GestaoEncomendas(this);
+    }
+
+    @Override
+    public int compareTo(GestaoEncomendas o) {
+        return this.encomendas.size() - o.encomendas.size();
     }
 
     //OUTROS MÉTODOS//
@@ -131,21 +140,42 @@ public class GestaoEncomendas {
 
     //vi. método que determina todas as encomendas em que um determinado produto, identificado pelo código, está presente, public Set<Integer> encomendasComProduto(String codProd)
     public Set<Integer> encomendasComProduto(String codProd){
-
-        return new TreeSet<>();
+        return this.encomendas.values().stream().filter(a->a.existeProdutoEncomenda(codProd)).map(Encomenda::getNEnc).collect(Collectors.toSet());
     }
 
+    //vii. método que determina todas as encomendas com data posterior a uma data fornecida como parâmetro,
+    public Set<Integer> encomendasAposData(LocalDate data){
+        return this.encomendas.values().stream().filter(a->a.getData().isAfter(data)).map(Encomenda::getNEnc).collect(Collectors.toSet());
+    }
 
-    /*
+    //viii. método que devolve uma ordenação, por ordem decrescente de valor de encomenda, de todas as encomendas do sistema,
+    public Set<Encomenda> encomendasValorDecrescente() {
+        Comparator<Encomenda> c = new Comparator<Encomenda>() {
+            public int compare(Encomenda e1, Encomenda e2) {
+                double a = e2.calculaValorTotal()-e1.calculaValorTotal();
+                if (a == 0) return 0;
+                if (a >= 0) return 1;
+                else return -1;
+            }
+        };
+        return this.encomendas.values().stream().sorted(c).collect(Collectors.toCollection(TreeSet::new));
+    }
 
-        vii. método que determina todas as encomendas com data posterior
-        a uma data fornecida como parâmetro, public
-        Set<Intteger> encomendasAposData(LocalDate d)
-        viii. método que devolve uma ordenação, por ordem decrescente
-        de valor de encomenda, de todas as encomendas do sistema,
-        public Set<Encomenda> encomendasValorDecrescente()
-        ix. método que calcula um map em que associa cada código de
-        produto à lista das encomendas em que foi referida, public
-        Map<String,List<Integer>> encomendasDeProduto()
-     */
+    //ix. método que calcula um map em que associa cada código de produto à lista das encomendas em que foi referida,
+    public Map<String,List<String>> encomendasDeProduto(){
+        Map<String, List<String>> mapa = new HashMap<>();
+
+        this.encomendas.values().forEach(elem->{
+            elem.getLinhas().forEach(a->{
+                List<String> lista = mapa.get(a.getReferencia());
+                if (lista == null) {
+                    lista = new ArrayList<>();
+                }
+                //lista.add(elem.getNEnc());                // TIPOS
+                mapa.put(a.getReferencia(), lista);
+            });
+        });
+
+        return mapa;
+    }
 }
