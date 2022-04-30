@@ -99,9 +99,9 @@ public class CasaInteligente {
     }
 
     /*
-viii. public Lampada maisGastadora(), que determina a lâmpada
-que mais consumiu até à data
-ix. public Set<Lampada> podiumEconomia(), que devolve as
-três lâmpadas mais económicas da casa
+    viii. public Lampada maisGastadora(), que determina a lâmpada
+    que mais consumiu até à data
+    ix. public Set<Lampada> podiumEconomia(), que devolve as
+    três lâmpadas mais económicas da casa
      */
 }

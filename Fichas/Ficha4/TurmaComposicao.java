@@ -8,6 +8,8 @@ public class TurmaComposicao {
     private String designacao;
     private List<Aluno> alunos;
 
+    // CONSTRUTORES //
+
     public TurmaComposicao(){
         this.designacao = "";
         this.alunos = new ArrayList<>();
@@ -27,6 +29,8 @@ public class TurmaComposicao {
         this.designacao = outra.getDesignacao();
         this.alunos = outra.getAlunos();
     }
+
+    // GETTER'S & SETTER'S //
 
     public void setDesignacao(String designacao){
         this.designacao = designacao;
@@ -54,6 +58,8 @@ public class TurmaComposicao {
         }
         return res;
     }
+
+    // MÉTODOS //
 
     public void addAluno(Aluno a){
         this.alunos.add(a.clone());
@@ -99,6 +105,7 @@ public class TurmaComposicao {
         return this.alunos.stream().map(Aluno::clone).collect(Collectors.toCollection(() -> new TreeSet<Aluno>(c)));
     }
 
+    // MÉTODOS QUE TODAS AS CLASSES DEVEM CONTER //
     @Override
     public String toString() {
         return "TurmaComposicao{" +
