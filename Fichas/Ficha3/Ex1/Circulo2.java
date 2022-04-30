@@ -19,8 +19,8 @@ public class Circulo2 extends Ponto {
     }
 
     public Circulo2(Circulo2 c) {
-        this.centro = c.getCentro();
         this.raio = c.getRaio();
+        this.centro = c.getCentro();
     }
 
         // GETTERS & SETTERS //

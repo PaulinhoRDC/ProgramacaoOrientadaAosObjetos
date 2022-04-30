@@ -1,10 +1,13 @@
 package Fichas.Ficha3.Ex3;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.*;
 
 public class Youtube {
 
+    //(a) métodos usuais de acesso e alteração das variáveis de instância
     // Object variables -----------------------------------------------------
     private String name;
     private List<Byte> video;
@@ -16,6 +19,7 @@ public class Youtube {
     private int dislike;
     // ----------------------------------------------------------------------
 
+    // CONSTRUTORES //
     public Youtube () {
         this.name = "Java Full Course";
         this.video = new ArrayList<>();
@@ -51,6 +55,7 @@ public class Youtube {
         this.dislike = y.getDislike();
     }
 
+    // GETTER'S & SETTER'S //
     public String getName() {
         return name;
     }
@@ -112,19 +117,34 @@ public class Youtube {
         this.dislike = dislike;
     }
 
-    // b)
+    // (b) método que insere um comentário ao vídeo, public void
     public void insertComment (String comentario) {
         this.comments.add(comentario);
     }
 
-    // c) -> ?
+    // (c) método que determina quantos dias passaram deste que o vídeo foi publicado,
+    public long qtsDiasDepois(){
+        LocalDate lancamento = this.getDate();
+        LocalDate atual = LocalDate.now();
 
-    // d)
+        return ChronoUnit.DAYS.between(lancamento, atual);
+    }
+
+    // (d) método que faz um like,
     public void thumbsUp() {
         this.like += 1;
     }
 
-    // e) -> ?
+    // (e) método que devolve o conteúdo do vídeo pronto para ser depois enviado para um qualquer render,
+    //(no caso da classe de teste o render será o System.out)
+//    public String processa(){
+//        StringBuilder s = new StringBuilder();
+//        String[] vid = this.getVideo();
+//        for(String i :vid) s.append(i);
+//        return s.toString();
+//    }
+
+    // OUTROS MÉTODOS QUE TODAS AS CLASSES DEVIAM CONTER //
 
     public Youtube clone () {
         return new Youtube(this);

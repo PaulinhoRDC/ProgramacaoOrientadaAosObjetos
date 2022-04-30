@@ -133,7 +133,25 @@ public class Encomenda extends LinhaEncomenda {
 
     // f)
     public void adicionaLinha(LinhaEncomenda linha) {
+        LinhaEncomenda[] ar = this.getLinhaEnc().toArray(new LinhaEncomenda[0]);
+        LinhaEncomenda[] novo = new LinhaEncomenda[ar.length+1];
+        System.arraycopy(ar,0,novo,0,ar.length);
+        novo[ar.length] = new LinhaEncomenda(linha);
+        this.setLinhaEnc(List.of(novo));
+    }
 
+    // g)
+    public void removeProduto(String codProd){
+        LinhaEncomenda[] ar = this.getLinhaEnc().toArray(new LinhaEncomenda[0]);
+        LinhaEncomenda[] novo = new LinhaEncomenda[ar.length-1];
+        int j=0;
+        for(int i = 0; i < ar.length; i++){
+            if(!ar[i].getCodigo().equals(codProd)){
+                novo[j] = ar[i];
+                j++;
+            }
+        }
+        System.arraycopy(novo, 0, ar, 0, novo.length);
     }
 }
 

@@ -22,7 +22,7 @@ public class Telemovel {
 
     // ----------------------------------------------------------------------
 
-    // Empty constructor
+    // Construtor Vazio
     public Telemovel() {
         this.brand = "Apple";
         this.model = "iPhone 11";
@@ -37,7 +37,7 @@ public class Telemovel {
         this.storageMsg = 0;
     }
 
-    // Full variable constructor
+    // Construtor Parametrizado
     public Telemovel(String brand, String model, int displayX, int displayY,
                      ArrayList<String> messages, ArrayList<String> apps, int storageTotal,
                      int storageApps, int storageMsg) {
@@ -54,7 +54,7 @@ public class Telemovel {
         this.storageMsg = storageMsg;
     }
 
-    // Clone constructor
+    // Construtor de Cópia
     public Telemovel(Telemovel t) {
         this.brand = t.getBrand();
         this.model = t.getModel();

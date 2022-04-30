@@ -88,7 +88,6 @@ public class Lampada {
 
     // (a) ligar a lâmpada no modo consumo máximo, public void lampON()
     public void lampON(){
-
         if (estadoOn)
             return;
 
@@ -100,7 +99,6 @@ public class Lampada {
 
     // (b) desligar a lâmpada, public void lampOFF()
     public void lampOFF(){
-
         if(estadoOn == false)
             return;
 
@@ -114,7 +112,6 @@ public class Lampada {
 
     // (c) ligar a lâmpada em modo ECO, public void lampECO()
     public void lampECO(){
-
         if(estadoOn)
             return;
 

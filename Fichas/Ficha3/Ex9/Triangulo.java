@@ -3,12 +3,12 @@ package Fichas.Ficha3.Ex9;
 import Fichas.Ficha3.Ponto;
 
 public class Triangulo {
-    //Variáveis de instância
+    // Variáveis de instância //
     private Ponto a;
     private Ponto b;
     private Ponto c;
 
-    //Construtores
+    // Construtores //
     public Triangulo() {
         this.a = new Ponto();
         this.b = new Ponto();
@@ -89,7 +89,7 @@ public class Triangulo {
         return maxY - minY;
     }
 
-    //OUTROS MÉTODOS QUE TODAS AS CLASSES DEVEM TER
+    // OUTROS MÉTODOS QUE TODAS AS CLASSES DEVEM TER //
 
     public String toString() {
         final StringBuffer sb = new StringBuffer("Triangulo {");            // Aqui, toString usa StringBuffer
