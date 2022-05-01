@@ -50,6 +50,8 @@ public class TurmaAlunos {                                  //ESTRATÉGIA DE COM
         }
 
         return r;
+
+        //return this.alunos.values().stream().collect(Collectors.toMap(Aluno::getNumero, Aluno::clone));
     }
 
     public void setAlunos(Map<String, Aluno> nAlunos) {
@@ -58,6 +60,8 @@ public class TurmaAlunos {                                  //ESTRATÉGIA DE COM
         for(String k : this.alunos.keySet()){
             this.alunos.put(k, nAlunos.get(k).clone());
         }
+
+        //this.alunos = al.values().stream().collect(Collectors.toMap(Aluno::getNumero, Aluno::clone));
     }
 
     public String getNomeTurma() {
@@ -119,8 +123,10 @@ public class TurmaAlunos {                                  //ESTRATÉGIA DE COM
         //this.alunos.get(codAluno).clone();     //assim dava problema, caso não existisse o aluno que procuramos
         //PRECISAMOS ANTES, DE VERIFICAR SE REALMENTE EXISTE ESTE ALUNO
 
-        if(!this.alunos.containsKey(codAluno)) return null;
-        else return this.alunos.get(codAluno).clone();
+        //if(!this.alunos.containsKey(codAluno)) return null;
+        //else return this.alunos.get(codAluno).clone();
+
+        return this.alunos.getOrDefault(codAluno, null).clone();
     }
 
     //iv. remover um aluno dado o seu código, public void removeAluno(String codAluno)
@@ -146,11 +152,14 @@ public class TurmaAlunos {                                  //ESTRATÉGIA DE COM
             t.add(a.clone());
         }
         return t;
+
+        //CompareTo do Aluno ja organiza por nome
+        //        return this.alunos.values().stream().sorted().collect(Collectors.toList());
     }
 
     //viii. devolver os alunos ordenados por ordem decrescente do seu número, public Set<Aluno> alunosOrdemDescrescenteNumero()
     //(assume-se que não existem números repetidos, daí ser viável devolver um Set sem correr o risco de a comparação eliminar resultados).
-    public Set<Aluno> alunosOrdemDescrescenteNumero(){
+    public Set<Aluno> alunosOrdemDecrescenteNumero(){
         Comparator<Aluno> c = (a1,a2) -> a2.getNumero().compareTo(a1.getNumero());
         //Trocamos a ordem do a2 e a1, para que seja de facto, ordem decrescente.
 
@@ -160,5 +169,7 @@ public class TurmaAlunos {                                  //ESTRATÉGIA DE COM
             t.add(a.clone());
         }
         return t;
+
+        //         this.alunos.values().forEach(a -> s.add(a.clone()));      , em vez do ciclo for
     }
 }
