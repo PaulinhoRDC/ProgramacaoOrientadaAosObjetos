@@ -36,6 +36,10 @@ public class TurmaComposicao {
         this.designacao = designacao;
     }
 
+    public String getDesignacao(){
+        return this.designacao;
+    }
+
     public void setAlunos(List<Aluno> alunos){
         // 2ª FORMA DE SE FAZER
         this.alunos = alunos.stream().map(Aluno::clone).collect(Collectors.toList());
@@ -43,10 +47,6 @@ public class TurmaComposicao {
         // DE IGUAL FORMA:
         // this.alunos = alunos.stream().map(a -> a.clone()).collect(Collectors.toList());
         // Funcionaria, como uma função "anónima"
-    }
-
-    public String getDesignacao(){
-        return this.designacao;
     }
 
     public List<Aluno> getAlunos(){

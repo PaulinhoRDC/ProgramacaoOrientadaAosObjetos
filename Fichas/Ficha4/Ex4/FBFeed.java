@@ -15,6 +15,8 @@ public class FBFeed {
 
     private ArrayList<FBPost> posts;
 
+    // CONSTRUTORES //
+
     public FBFeed(){
         this.posts = new ArrayList<>();
     }
@@ -27,6 +29,8 @@ public class FBFeed {
         setPosts(feed.getPosts());
     }
 
+    // GETTER'S & SETTER'S //
+
     public List<FBPost> getPosts() {
         return this.posts.stream().map(FBPost::clone).collect(Collectors.toList());
     }
@@ -37,21 +41,20 @@ public class FBFeed {
 
     //MÉTODOS//
 
-    // i. Determinar o número de posts de um user public int nrPosts(String user)
+    // i. Determinar o número de posts de um user,
 
     public int nrPosts(String user){
         return this.postsOf(user).size();
     }
 
-    //ii. Determinar a lista de posts de um user public List<FBPost> postsOf(String user)
+    //ii. Determinar a lista de posts de um user,
 
     public List<FBPost> postsOf(String user){
         return this.posts.stream().filter(post -> (post.getUserName().equals(user)))
                 .collect(Collectors.toList());
     }
 
-
-    //iii. Determinar a lista de posts de um user num determinado intervalo de tempo public List<FBPost> postsOf(String user, LocalDateTime inicio, LocalDateTime fim)
+    //iii. Determinar a lista de posts de um user num determinado intervalo de tempo,
 
     public List<FBPost> postsOf(String user, LocalDateTime inicio, LocalDateTime fim){
         return this.posts.stream().filter(post -> (post.getUserName().equals(user)
@@ -60,7 +63,7 @@ public class FBFeed {
                 .collect(Collectors.toList());
     }
 
-    //iv. Obter um post dado o seu identificador public FBPost getPost(int id)
+    //iv. Obter um post dado o seu identificador,
 
     public FBPost getPost(int id){
         for(FBPost post : this.posts)
@@ -70,25 +73,25 @@ public class FBFeed {
     }
 
 
-    //v. Inserir um comentário num post public void comment(FBPost post, String comentario)
+    //v. Inserir um comentário num post,
 
     public void comment(FBPost post, String comentario){
         post.getComments().add(comentario);
     }
 
-    //vi. Inserir um comentário num post public void comment(int postid, String comentario)
+    //vi. Inserir um comentário num post,
 
     public void comment(int postid, String comentario){
         comment(getPost(postid), comentario);
     }
 
-    //vii. Adicionar um like a um post public void like(FBPost post)
+    //vii. Adicionar um like a um post,
 
     public void like(FBPost post){
         post.setLikes(post.getLikes() + 1);
     }
 
-    //viii. Adicionar um like a um post public void like(int postid)
+    //viii. Adicionar um like a um post,
 
     void like(int postid){
         FBPost post = getPost(postid);
