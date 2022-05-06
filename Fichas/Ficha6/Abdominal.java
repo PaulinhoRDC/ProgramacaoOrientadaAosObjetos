@@ -15,16 +15,19 @@ public class Abdominal extends Atividade {
     private int repeticoes;
 
     public Abdominal(){
+        super();
         this.tipo = "";
         this.repeticoes = 0;
     }
 
-    public Abdominal(String tipo, int repeticoes){
+    public Abdominal(int cod, String desc, String data, int tempo, String tipo, int repeticoes){
+        super(cod, desc, data, tempo);
         this.tipo = tipo;
         this.repeticoes = repeticoes;
     }
 
     public Abdominal(Abdominal a){
+        super(a);
         this.tipo = a.getTipo();
         this.repeticoes = a.getRepeticoes();
     }

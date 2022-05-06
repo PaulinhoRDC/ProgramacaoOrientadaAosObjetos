@@ -1,5 +1,6 @@
 package Fichas.Ficha6;
 
+import java.io.*;
 import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -63,13 +64,23 @@ public class Fitness {
         return (int) this.utilizadores.values().stream().count();
     }
 
+    public int quantos2() { return this.utilizadores.size(); }
+
     //(c) Devolver o número total de actividades desportivas, de um dado tipo, efectuadas por um utilizador.
-    public int quantos(String actividade, String email){
+    public int quantos(String actividade, String email) throws UserNotExistException{
+        if (!utilizadores.containsKey(email)){
+            throw new UserNotExistException("User " + email + " não existe.");
+        }
+
         return (int) this.utilizadores.get(email).getAtividades().size();
     }
 
     //(d) Devolver a informação de um utilizador, dado o seu código.
-    public Utilizador getUtilizador(String email){
+    public Utilizador getUtilizador(String email) throws UserNotExistException {
+        if (!utilizadores.containsKey(email)){
+            throw new UserNotExistException("User " + email + " não existe.");
+        }
+
         return this.utilizadores.get(email).clone();
     }
 
@@ -89,9 +100,10 @@ public class Fitness {
 
     //(g) Adicionar a informação de um conjunto de actividades de um utilizador
     // e que foram feitas numa outra aplicação e que passam agora a fazer parte do Fitness.
-//    public void adiciona(String email, Set<Atividade> activs){
-//        //this.utilizadores.get(email).getAtividades().add(activs.stream().map(Atividade::clone));
-//    }
+      public void adiciona(String email, Set<Atividade> activs){
+        Utilizador u = this.utilizadores.get(email);
+        activs.forEach(a-> u.adicionaAtividade(a));
+      }
 
     //(h) Indicar o número total de minutos que foram dispendidos por um utilizador em actividades de fitness
     public int tempoTotalUtilizador(String email){
@@ -172,13 +184,68 @@ public class Fitness {
                 .iterator();
     }
 
+    //(f) Obter um Map em que se associa a cada actividade os seus top 3
+    //utilizadores com mais dispêndio de calorias nesta atividade, ordenados
+    //de forma decrescente por calorias.
+    //A chave do Map será o nome da classe da actividade.
+    //public Map<String, List<Utilizador>> podiumPorActiv()
 
 
 
+    // MÉTODOS FASE 3 //
+
+    //3. Acrescente, na classe Fitness, um método para obter a lista das actividades
+    //efectuadas e que atribuem pontos.
+    public List<FazMetros> daoPontos(){
+        return getAllActividades()
+                .stream()
+                .filter(a -> a instanceof FazMetros)
+                .map(a -> (FazMetros) a)
+                .collect(Collectors.toList());    }
 
 
+    // MÉTODOS FASE 4 //
+    // Deverá ser possível exportar toda a informação relativa a utilizadores e actividades,
+    //representada em memória pela classe Fitness. Implemente assim as
+    //seguintes funcionalidades:
+    //  1. Exportar a informação de todas as actividades de um utilizador para um ficheiro CSV
+    //  2. Gravar e carregar a instância de Fitness num (e de um) ficheiro de objectos.
 
+    public void grava2(String filename) throws FileNotFoundException, IOException{
+        ObjectOutputStream os = new ObjectOutputStream( new FileOutputStream(filename));
 
+        os.writeObject(this);
+    }
+
+    public void grava(String filename) {        // outra maneira //
+        try {
+            ObjectOutputStream os = new ObjectOutputStream( new FileOutputStream(filename));
+            os.writeObject(this);
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static Fitness carrega (String filename){        // método de classe , NÃO PODE MANIPULAR VARIÁVEIS DE INSTÂNCIA
+        Fitness f = null;
+        ObjectInputStream is = null;
+
+        try{
+            is = new ObjectInputStream(new FileInputStream(filename));
+            f = (Fitness) is.readObject();
+        } catch (IOException e) {
+            e.printStackTrace();
+            f = new Fitness();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+            f = new Fitness();
+        }
+
+        return f;
+    }
 
 
 

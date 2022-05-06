@@ -152,6 +152,15 @@ public class Utilizador {
             this.atividades.add(a.clone());
         }    }
 
+    // MÉTODOS //
+
+    public void adicionaAtividade(Atividade atividade){
+        this.atividades.add(atividade.clone());
+    }
+
+
+    // MÉTODOS QUE TODAS AS CLASSES DEVERIAM IMPLEMENTAR //
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

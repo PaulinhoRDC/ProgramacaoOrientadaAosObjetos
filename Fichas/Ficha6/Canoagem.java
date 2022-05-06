@@ -9,11 +9,12 @@ CaloriasCanoagem = distancia * ventocontra * tempo * idade/4
 
  */
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.Objects;
 
-public class Canoagem extends Atividade{
+public class Canoagem extends Atividade implements FazMetros, Serializable {
 
     private String embarcacao;
     private int vento;
@@ -21,7 +22,10 @@ public class Canoagem extends Atividade{
     private int distancia;
     private int voltas;
 
+    private static int pontosMetro;                 // VARIÁVEL DE CLASSE, PARA DAR OS MESMOS PONTOS POR METRO SEMPRE
+
     public Canoagem(){
+        super();
         this.embarcacao = "";
         this.vento = 0;
         this.direcao = "";
@@ -29,7 +33,8 @@ public class Canoagem extends Atividade{
         this.voltas = 0;
     }
 
-    public Canoagem(String embarcacao, int vento, String direcao, int distancia, int voltas){
+    public Canoagem(int cod, String desc, String data, int tempo, String embarcacao, int vento, String direcao, int distancia, int voltas){
+        super(cod, desc, data, tempo);
         this.embarcacao = embarcacao;
         this.vento = vento;
         this.direcao = direcao;
@@ -38,6 +43,7 @@ public class Canoagem extends Atividade{
     }
 
     public Canoagem(Canoagem a){
+        super(a);
         this.embarcacao = a.getEmbarcacao();
         this.vento = a.getVento();
         this.direcao = a.getDirecao();
@@ -110,11 +116,31 @@ public class Canoagem extends Atividade{
                 '}';
     }
 
+    public Atividade clone(){
+        return new Canoagem(this);
+    }
+
     public double calorias(Utilizador user){
         long idade = ChronoUnit.YEARS.between(LocalDate.now(), user.getDataNascimento());
         return (double)this.distancia*this.vento*getTempo()*idade/4;
     };
-    public Atividade clone(){
-        return new Canoagem(this);
+
+    // FASE 3 // Métodos que têm de ser implementados, devido à interface FazMetros
+    //2. Actualize as classes Corrida e Canoagem de modo a que implementem a interface.
+
+    @Override
+    public void setPontosMetro(int pontos) {
+        pontosMetro = pontos;
     }
+
+    @Override
+    public int getPontosMetro() {
+        return pontosMetro;
+    }
+
+    @Override
+    public double pontos() {
+        return pontosMetro * this.vento*1.5;
+    }
+
 }

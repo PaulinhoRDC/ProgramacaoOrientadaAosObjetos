@@ -9,28 +9,35 @@ CaloriasCorrida = distancia * pesoutilizador * tempo * idade/50
 
  */
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.Objects;
 
-public class Corrida extends Atividade{
+public class Corrida extends Atividade implements FazMetros, Serializable {
+
     private int distancia;
     private int altimetria;
     private String percurso;
 
+    private static int pontosMetro;                 // VARIÁVEL DE CLASSE, PARA DAR OS MESMOS PONTOS POR METRO SEMPRE
+
     public Corrida(){
+        super();
         this.distancia = 0;
         this.altimetria = 0;
         this.percurso = "";
     }
 
-    public Corrida(int distancia, int altimetria, String percurso){
+    public Corrida(int cod, String desc, String data, int tempo, int distancia, int altimetria, String percurso){
+        super(cod, desc, data, tempo);
         this.distancia = distancia;
         this.altimetria = altimetria;
         this.percurso = percurso;
     }
 
     public Corrida(Corrida a){
+        super(a);
         this.distancia = a.getDistancia();
         this.altimetria = a.getAltimetria();
         this.percurso = a.getPercurso();
@@ -82,12 +89,33 @@ public class Corrida extends Atividade{
                 '}';
     }
 
+    public Atividade clone(){
+        return new Corrida(this);
+    }
+
+
     public double calorias(Utilizador user){
         long idade = ChronoUnit.YEARS.between(LocalDate.now(), user.getDataNascimento());
         return (double)this.distancia*user.getPeso()*getTempo()*idade/50;
     };
-    public Atividade clone(){
-        return new Corrida(this);
+
+
+    // FASE 3 // Métodos que têm de ser implementados, devido à interface FazMetros
+    //2. Actualize as classes Corrida e Canoagem de modo a que implementem a interface.
+
+    @Override
+    public void setPontosMetro(int pontos) {
+        pontosMetro = pontos;
+    }
+
+    @Override
+    public int getPontosMetro() {
+        return pontosMetro;
+    }
+
+    @Override
+    public double pontos() {
+        return pontosMetro * this.altimetria*1.5;
     }
 }
 

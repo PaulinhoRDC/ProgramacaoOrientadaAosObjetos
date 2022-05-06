@@ -25,6 +25,7 @@ public abstract class Atividade {
         this.data = "";
         this.tempo = 0;
     }
+
     public Atividade(int cod, String desc, String data, int tempo){
         this.cod = cod;
         this.desc = desc;
@@ -98,4 +99,5 @@ public abstract class Atividade {
     public abstract Atividade clone();
 
     public abstract double calorias(Utilizador u);
+
 }
