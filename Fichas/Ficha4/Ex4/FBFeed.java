@@ -13,7 +13,7 @@ public class FBFeed {
     (b) A classe FBFeed implementa a timeline e deve implementar, além dos métodos usuais, os métodos que permitam:
      */
 
-    private ArrayList<FBPost> posts;
+    private List<FBPost> posts;
 
     // CONSTRUTORES //
 
@@ -36,7 +36,7 @@ public class FBFeed {
     }
 
     public void setPosts(List<FBPost> posts) {
-        this.posts = posts.stream().map(FBPost::clone).collect(Collectors.toCollection(ArrayList::new));
+        this.posts = posts.stream().map(FBPost::clone).collect(Collectors.toList());
     }
 
     //MÉTODOS//
@@ -121,7 +121,7 @@ public class FBFeed {
 
     public List<Integer> top5CommentsInt() {
         return this.posts.stream()
-                .sorted((Comparator<FBPost>) (p1, p2) -> p2.getComments().size() - p1.getComments().size())
+                .sorted((p1, p2) -> p2.getComments().size() - p1.getComments().size())
                 .limit(5)
                 .map(FBPost::getID)
                 .collect(Collectors.toList());

@@ -84,7 +84,7 @@ public class CasaInteligente {
     //vii. public double consumoTotal(), que determina o consumo total da casa
 
     public double consumoTotal() {
-        ArrayList<Lampada> lis = new ArrayList<Lampada>(this.lamps);
+        ArrayList<Lampada> lis = new ArrayList<>(this.lamps);
 
         return lis.stream().mapToDouble(Lampada::getConsumoTotal).sum();
     }

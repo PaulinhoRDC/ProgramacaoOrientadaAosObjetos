@@ -97,7 +97,7 @@ public class TurmaComposicao {
 
     public Set<Aluno> alunosOrdemAlfabetica1(){
         return this.alunos.stream().map(Aluno::clone)
-                          .sorted((((o1, o2) -> o1.getNome().compareTo(o2.getNome()))))
+                          .sorted((o1, o2) -> o1.getNome().compareTo(o2.getNome()))
                           .limit(3).collect(Collectors.toSet());
     }
 
