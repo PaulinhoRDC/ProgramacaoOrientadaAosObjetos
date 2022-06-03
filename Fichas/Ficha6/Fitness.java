@@ -24,6 +24,7 @@ public class Fitness {
     private Map<String, Utilizador> utilizadores;
 
     // CONSTRUTORES //
+
     public Fitness(){
         this.utilizadores = new TreeMap<>();
     }
@@ -72,7 +73,7 @@ public class Fitness {
             throw new UserNotExistException("User " + email + " não existe.");
         }
 
-        return (int) this.utilizadores.get(email).getAtividades().size();
+        return (int) this.utilizadores.get(email).getAtividades().stream().filter(e -> e.equals(actividade)).count();
     }
 
     //(d) Devolver a informação de um utilizador, dado o seu código.
@@ -89,7 +90,7 @@ public class Fitness {
         this.utilizadores.get(email).getAtividades().add(act);
     }
 
-    //(f) Devolver uma lista contendo a cópia de todos as actividades existentes na aplicação.
+    //(f) Devolver uma lista contendo a cópia de todas as actividades existentes na aplicação.
     public List<Atividade> getAllActividades(){
         List<Atividade> res = new ArrayList<>();
 
@@ -179,7 +180,7 @@ public class Fitness {
     public Iterator<Utilizador> ordenarUtilizador(String criterio) {
         Comparator<Utilizador> comparator = comparadores.get(criterio);
         if(comparator == null) return null;
-        return this.utilizadores.values().stream()
+        return this.utilizadores.values().stream().map(Utilizador::clone)
                 .sorted(comparator)
                 .iterator();
     }
