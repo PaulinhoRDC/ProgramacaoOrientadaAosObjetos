@@ -43,7 +43,12 @@ public class CasaInteligente {
         this.morada = morada;
         this.devices = new HashMap();
         this.locations = new HashMap<>();
+    }
 
+    public CasaInteligente(Collection<SmartDevice> devices){
+        this.morada = "";
+        this.locations = new HashMap<>();
+        this.devices = devices.stream().collect(Collectors.toMap(SmartDevice::getId, SmartDevice::clone));
     }
 
     public String getMorada() {
