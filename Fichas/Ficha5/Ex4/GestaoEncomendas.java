@@ -11,6 +11,8 @@ public class GestaoEncomendas implements Comparable<GestaoEncomendas>{
 
     private Map<Integer,Encomenda> encomendas;
 
+    // CONSTRUTORES //
+
     public GestaoEncomendas(){
         this.encomendas = new HashMap<>();
     }
@@ -117,24 +119,6 @@ public class GestaoEncomendas implements Comparable<GestaoEncomendas>{
 
             // Usando streams
             //return this.encomendas.values().stream().sorted(c).map(e -> e.getNEnc()).findFirst().orElse(-1);
-
-    }
-
-    public Integer encomendaComMaisProdutos2() {
-        Comparator<Encomenda> c = (a1,a2) -> a2.numeroTotalProdutos() - a1.numeroTotalProdutos();
-
-        TreeSet<Encomenda> t = new TreeSet<>(c);
-
-        for(Encomenda e : this.encomendas.values()) {
-            t.add(e); //Nao precisamos de clone porque vamos devolver apenas um inteiro
-        }
-
-        Encomenda r = t.first();
-
-        return r.getNEnc();
-
-        // Usando streams
-        //return this.encomendas.values().stream().sorted(c).map(e -> e.getNEnc()).findFirst().orElse(-1);
 
     }
 

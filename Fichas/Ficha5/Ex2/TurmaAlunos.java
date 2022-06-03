@@ -28,7 +28,7 @@ public class TurmaAlunos {                                  //ESTRATÉGIA DE COM
 
         for(Aluno a: nAlunos.values()){
             String chave = a.getNumero();
-            this.alunos.put(chave, a.clone());
+            this.alunos.put(chave, a.clone());        // this.alunos.put(a.getNumero(), a.clone());
         }
     }
 
@@ -57,7 +57,7 @@ public class TurmaAlunos {                                  //ESTRATÉGIA DE COM
     public void setAlunos(Map<String, Aluno> nAlunos) {
         this.alunos = new HashMap<>();
 
-        for(String k : this.alunos.keySet()){
+        for(String k : nAlunos.keySet()){
             this.alunos.put(k, nAlunos.get(k).clone());
         }
 
@@ -123,10 +123,10 @@ public class TurmaAlunos {                                  //ESTRATÉGIA DE COM
         //this.alunos.get(codAluno).clone();     //assim dava problema, caso não existisse o aluno que procuramos
         //PRECISAMOS ANTES, DE VERIFICAR SE REALMENTE EXISTE ESTE ALUNO
 
-        //if(!this.alunos.containsKey(codAluno)) return null;
-        //else return this.alunos.get(codAluno).clone();
+        if(!this.alunos.containsKey(codAluno)) return null;
+        else return this.alunos.get(codAluno).clone();
 
-        return this.alunos.getOrDefault(codAluno, null).clone();
+        //return this.alunos.getOrDefault(codAluno, null).clone();
     }
 
     //iv. remover um aluno dado o seu código, public void removeAluno(String codAluno)
@@ -136,7 +136,7 @@ public class TurmaAlunos {                                  //ESTRATÉGIA DE COM
 
     //v. devolver a informação de todos os números de aluno existentes, public Set<String> todosOsCodigos()
     public Set<String> todosOsCodigos(){
-        return this.alunos.keySet();                //keySet devolve todas as chaves
+        return this.alunos.keySet();          //keySet devolve conjunto de todas as chaves
     }
 
     //vi. devolver a informação de quantos alunos existem na turma, public int qtsAlunos()
@@ -170,6 +170,6 @@ public class TurmaAlunos {                                  //ESTRATÉGIA DE COM
         }
         return t;
 
-        //         this.alunos.values().forEach(a -> s.add(a.clone()));      , em vez do ciclo for
+        //         this.alunos.values().forEach(a -> t.add(a.clone()));      , em vez do ciclo for
     }
 }
